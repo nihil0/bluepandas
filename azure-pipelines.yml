@@ -33,7 +33,6 @@ jobs:
         sourceFolder: $(Agent.TempDirectory)
         contents: 'secrets.py' 
         targetFolder: $(Agent.BuildDirectory)/test/
-        overWrite: true
 
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
