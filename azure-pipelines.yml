@@ -37,5 +37,5 @@ jobs:
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
-    - script: /home/vsts/.local/bin/pytest
+    - script: pwd
       displayName: 'Run unit tests'
