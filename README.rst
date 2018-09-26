@@ -18,7 +18,7 @@ The library reads an environment variable containing the connection string to yo
 blob storage account. The variable must be named ``AZ_<STORAGE-ACCOUNT-NAME>``.
 
 
-.. image:: http://i68.tinypic.com/2jfbnfp.png
+.. image:: http://i67.tinypic.com/25sljxt.png
 
 Short example::
 
