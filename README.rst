@@ -17,6 +17,9 @@ Example
 The library reads an environment variable containing the connection string to your
 blob storage account. The variable must be named ``AZ_<STORAGE-ACCOUNT-NAME>``.
 
+
+.. image:: http://i68.tinypic.com/2jfbnfp.png
+
 Short example::
 
     import bluepandas
