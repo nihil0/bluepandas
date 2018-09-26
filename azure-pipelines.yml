@@ -2,29 +2,30 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+jobs:
+  - job: 'Build'
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    strategy:
+      matrix:
+        Python27:
+          python.version: '2.7.15'
+        Python35:
+          python.version: '3.5.5'
+        Python36:
+          python.version: '3.6.5'
+        Python37:
+          python.version: '3.7.0'
+      maxParallel: 4
+      
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: $(python.version)
+        architecture: 'x64'
 
-pool:
-  vmImage: 'Ubuntu 16.04'
-  strategy:
-    matrix:
-      Python27:
-        python.version: '2.7'
-      Python35:
-        python.version: '3.5'
-      Python36:
-        python.version: '3.6'
-      Python37:
-        python.version: '3.7'
-    maxParallel: 4
+    - script: pip install --user -r requirements.txt
+      displayName: 'Setup tox for testing'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-    architecture: 'x64'
-    
-- script: pip install --user -r requirements.txt
-  displayName: 'Setup tox for testing'
-
-- script: /home/vsts/.local/bin/pytest
-  displayName: 'Run unit tests'
+    - script: /home/vsts/.local/bin/pytest
+      displayName: 'Run unit tests'
