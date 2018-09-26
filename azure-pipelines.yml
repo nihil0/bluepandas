@@ -24,6 +24,17 @@ jobs:
         versionSpec: $(python.version)
         architecture: 'x64'
 
+    - task: DownloadSecureFile@1
+      inputs:
+        secureFile: 'secrets.py'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: $(Agent.TempDirectory)
+        contents: 'secrets.py' 
+        targetFolder: $(Agent.BuildDirectory)/test/
+        overWrite: true
+
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
