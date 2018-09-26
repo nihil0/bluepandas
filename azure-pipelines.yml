@@ -37,6 +37,6 @@ jobs:
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
-    - script:  pytest --junitxml=junit/test-results.xml
+    - script:  /home/vsts/.local/bin/pytest --junitxml=junit/test-results.xml
       displayName: 'Run unit tests'
       
