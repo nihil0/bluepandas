@@ -40,5 +40,5 @@ jobs:
     - script: |
         pwd
         ls -al .
-        echo $AGENT_TEMPDIRECTORY
+        echo $AGENT_BUILDDIRECTORY
       displayName: 'Run unit tests'
