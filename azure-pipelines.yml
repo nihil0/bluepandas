@@ -11,5 +11,8 @@ steps:
 - script: pip install --user tox
   displayName: 'Setup tox for testing'
 
-- script: tox
-  displayName: 'Run tests'
+- script: export PATH=~/.local/bin:PATH
+  displayName: 'Add tox location to path'
+  
+  -script: tox -h
+  desplayName: 'print help to screen'
