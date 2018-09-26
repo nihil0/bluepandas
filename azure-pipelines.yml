@@ -37,5 +37,8 @@ jobs:
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
-    - script: pwd
+    - script: |
+        pwd
+        ls -al .
+        echo $AGENT_TEMPDIRECTORY
       displayName: 'Run unit tests'
