@@ -10,5 +10,5 @@ steps:
 - script: pip install --user tox
   displayName: 'Setup tox for testing'
 
-- script: /home/vsts/.local/bin/tox -h
+- script: /home/vsts/.local/bin/tox
   displayName: 'dump env'
