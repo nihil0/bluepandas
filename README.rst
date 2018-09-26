@@ -4,6 +4,13 @@ BluePandas
 
 A Python library to read files in Azure Blob Storage as Pandas DataFrames
 
+Installation
+-------------
+
+The latest version is available on PyPI::
+
+    pip install bluepandas
+
 Example
 --------
 
