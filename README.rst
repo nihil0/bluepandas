@@ -15,12 +15,14 @@ Example
 --------
 
 The library reads an environment variable containing the connection string to your
-blob storage account. The variable must be named ``AZ_<STORAGE-ACCOUNT-NAME>``.
+blob storage account. The variable must be named ``AZ_<STORAGE-ACCOUNT-NAME>``  
+and set to your connection string, which is obtained from the Azure Portal by 
+navigating to you storage account under settings/access keys as shown below
 
 
 .. image:: http://i67.tinypic.com/25sljxt.png
 
-Short example::
+Short example on usage::
 
     import bluepandas
 
