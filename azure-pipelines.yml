@@ -23,8 +23,8 @@ steps:
     versionSpec: '$(python.version)'
     architecture: 'x64'
     
-- script: pip install --user tox
+- script: pip install --user -r requirements.txt
   displayName: 'Setup tox for testing'
 
-- script: /home/vsts/.local/bin/tox
-  displayName: 'dump env'
+- script: /home/vsts/.local/bin/pytest
+  displayName: 'Run unit tests'
