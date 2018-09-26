@@ -7,7 +7,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: pip3 install tox
+- script: pip install tox
   displayName: 'Setup tox for testing'
 
 - script: tox
