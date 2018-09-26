@@ -4,7 +4,6 @@
 # https://aka.ms/yaml
 
 pool:
-  name: 'Azure Pipelines Hosted Pool'
   vmImage: 'Ubuntu 16.04'
 
 steps:
