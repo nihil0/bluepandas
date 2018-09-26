@@ -10,7 +10,9 @@ steps:
 - script: pip install --user tox
   displayName: 'Setup tox for testing'
 
-- script: export PATH=/home/vsts/.local/bin:$PATH
+- script: |
+    export PATH="/home/vsts/.local/bin:$PATH"
+    echo $PATH
   displayName: 'Add tox location to path'
   
 - script: echo $PATH
