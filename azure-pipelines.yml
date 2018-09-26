@@ -13,5 +13,5 @@ steps:
 - script: export PATH=~/.local/bin:PATH
   displayName: 'Add tox location to path'
   
-- script: tox -h
-  displayName: 'print help to screen'
+- script: env
+  displayName: 'dump env'
