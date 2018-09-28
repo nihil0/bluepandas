@@ -3,7 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 jobs:
-  - job: 'Run Tests'
+  - job: 'run-tests'
     pool:
       vmImage: 'Ubuntu 16.04'
     strategy:
@@ -46,7 +46,7 @@ jobs:
         testResultsFiles: '**/test-*.xml'
         testRunTitle: 'Publish test results for Python $(python.version)'
 
-  - job: 'Build and deploy'
+  - job: 'build'
     pool:
       vmImage: 'Ubuntu 16.04'
     
