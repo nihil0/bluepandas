@@ -36,7 +36,7 @@ jobs:
         overWrite: true
 
     - script: pip install --user -r requirements.txt
-      displayName: 'Setup tox for testing'
+      displayName: 'Install dependencies'
 
     - script: /home/vsts/.local/bin/pytest --junitxml=junit/test-results.xml
       displayName: 'Run unit tests'
@@ -49,8 +49,12 @@ jobs:
   - job: 'build'
     pool:
       vmImage: 'Ubuntu 16.04'
+    dependsOn: 'run_tests'
     
     steps:
+      - script: pip install --user setuptools
+        displayName: 'Install setuptools'
+      
       - task: CopyFiles@2
         inputs:
           sourceFolder: $(Agent.TempDirectory)
