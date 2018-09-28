@@ -8,7 +8,7 @@ config = {
     'author': 'Neelabh Kashyap',
     'url': 'https://github.com/nihil0/bluepandas',
     'author_email': 'neelabh.kashyap@cgi.com',
-    'version': '0.1',
+    'version': '0.2',
     'install_requires': ['azure-storage-blob', 'pandas'],
     'packages': find_packages(exclude=['contrib', 'docs', 'tests']),
     'scripts': [],

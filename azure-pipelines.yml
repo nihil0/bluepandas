@@ -3,7 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 jobs:
-  - job: 'Build'
+  - job: 'Run Tests'
     pool:
       vmImage: 'Ubuntu 16.04'
     strategy:
@@ -33,15 +33,34 @@ jobs:
         sourceFolder: $(Agent.TempDirectory)
         contents: 'secrets.py' 
         targetFolder: $(Agent.BuildDirectory)/s/test/
+        overWrite: true
 
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
-    - script:  /home/vsts/.local/bin/pytest --junitxml=junit/test-results.xml
+    - script: /home/vsts/.local/bin/pytest
       displayName: 'Run unit tests'
+
+  - job: 'Build and deploy'
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    
+    steps:
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(Agent.TempDirectory)
+          contents: 'secrets.py' 
+          targetFolder: $(Agent.BuildDirectory)/s/test/
+          overWrite: true
+
+      - script: python setup.py sdist
+        displayName: 'Build source distribution'
       
-    - task: PublishTestResults@2
-      inputs:
-        testResultsFiles: '**/test-*.xml'
-        testRunTitle: 'Publish test results for Python $(python.version)'
-      
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish artifact: release'
+        inputs:
+          pathtoPublish: 'dist'
+          artifactName: 'release'
+
+
+
