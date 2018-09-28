@@ -38,8 +38,13 @@ jobs:
     - script: pip install --user -r requirements.txt
       displayName: 'Setup tox for testing'
 
-    - script: /home/vsts/.local/bin/pytest
+    - script: /home/vsts/.local/bin/pytest --junitxml=junit/test-results.xml
       displayName: 'Run unit tests'
+
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFiles: '**/test-*.xml'
+        testRunTitle: 'Publish test results for Python $(python.version)'
 
   - job: 'Build and deploy'
     pool:
