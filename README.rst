@@ -22,12 +22,38 @@ navigating to you storage account under settings/access keys as shown below
 
 .. image:: http://i67.tinypic.com/25sljxt.png
 
-Short example on usage::
+Reading a data frame::
 
     import bluepandas
 
     df = bluepandas.read_csv("wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/path/to/your.csv")
 
+This returns a BluePandas data frame, which subclasses the pandas data frame, but allows you to write to Blob Storage using the ``write_csv()`` method. 
+
+Writing a data frame::
+
+    import bluepandas
+    
+    # Import the iris dataset
+    from sklearn import datasets
+    
+    values = datasets.load_iris()['data']
+    columns = datasets.load_iris()['feature_names']
+    
+    df = bluepandas.DataFrame(values, columns=columns)
+    
+    df.to_csv("wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/path/to/iris.csv", index=False)
+    
+Converting a pandas data frame to a BluePandas data frame::
+    
+    import pandas as pd
+    import bluepandas
+    
+    df = pd.DataFrame([(1,2,3),(4,5,6)], columns=['A','B','C'])
+    
+    # BluePandas data frame
+    bpd_df = bluepandas.DataFrame(df.values, columns=df.columns)
+    
 
 .. |build| image:: https://dev.azure.com/nihil0/bluepandas/_apis/build/status/nihil0.bluepandas
 .. _build: https://dev.azure.com/nihil0/bluepandas/_build/latest?definitionId=1
