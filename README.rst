@@ -48,7 +48,9 @@ Writing a data frame
     
     df.to_csv("wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/path/to/iris.csv", index=False)
     
-Converting a pandas data frame to a BluePandas data frame::
+Converting a pandas data frame to a BluePandas data frame
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
     
     import pandas as pd
     import bluepandas
