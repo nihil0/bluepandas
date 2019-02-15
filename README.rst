@@ -22,16 +22,20 @@ navigating to you storage account under settings/access keys as shown below
 
 .. image:: http://i67.tinypic.com/25sljxt.png
 
-Reading a data frame::
-
+Reading a data frame
+~~~~~~~~~~~~~~~~~~~~~~
+::
+    
     import bluepandas
 
     df = bluepandas.read_csv("wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/path/to/your.csv")
 
 This returns a BluePandas data frame, which subclasses the pandas data frame, but allows you to write to Blob Storage using the ``write_csv()`` method. 
 
-Writing a data frame::
-
+Writing a data frame
+~~~~~~~~~~~~~~~~~~~~~~
+::
+    
     import bluepandas
     
     # Import the iris dataset
